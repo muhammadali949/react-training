@@ -1,11 +1,29 @@
-import './App.css';
+import React, { Component } from 'react';
+import MoviesList from './componets/MoviesList';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World!</h1>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const mobiles = [
+      {
+        id: 1,
+        name: "Oppo"
+      },
+      {
+        id: 2,
+        name: "Samsung"
+      },
+      {
+        id: 3,
+        name: "Huawei"
+      }
+    ];
+
+    return (
+      <div>
+        <MoviesList mobiles={mobiles} />
+      </div>
+    );
+  }
 }
 
 export default App;
