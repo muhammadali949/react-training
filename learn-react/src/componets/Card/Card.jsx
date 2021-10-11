@@ -1,12 +1,10 @@
-import React,{useContext} from 'react'
+import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@material-ui/core/Grid'
-// import Paper from '@material-ui/core/Paper'
 import { CardActionArea } from '@mui/material'
-import { makeStyles } from '@material-ui/core'; 
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
 import { ThemeProvider,createTheme } from '@mui/material';
@@ -27,7 +25,6 @@ function CardMovie({movies,theme}) {
         <Grid container spacing={3}>
         {movies.map(movie => (
             <Grid item xs={12} md={6} lg={4} key={movie.id}>
-                {/* <Paper> */}
                 <ThemeProvider theme={themee}>
                     <Card>
                         <CardActionArea>
@@ -55,7 +52,6 @@ function CardMovie({movies,theme}) {
                         </CardActionArea>
                     </Card>
                     </ThemeProvider>
-                {/* </Paper> */}
             </Grid>
            
         ))}

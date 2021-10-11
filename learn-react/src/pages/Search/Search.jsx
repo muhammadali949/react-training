@@ -27,10 +27,6 @@ function Home() {
             
         }
     }, [queryValue])
-    
-   
-    
-
     useEffect(() => {
         if(lang || genreValue ){
             axios.get(`${REACT_APP_BASE}/discover/movie?api_key=${REACT_APP_KEY_API}&with_original_language=${lang}&with_genres=${genreValue}
@@ -50,7 +46,6 @@ function Home() {
             .then(res =>setMovies(res.data.results))
             .catch(err=>console.log(err))
             return () => {
-        
     }
 }
     }, [date,vote])
@@ -89,7 +84,6 @@ function Home() {
             </div>
            <div>
             <h3 style={{marginLeft:'30px'}}>Language....</h3>
-            {/* <input style={{ width: '400px', padding: '10px', marginBottom: '20px' ,marginLeft:'30px'}} value={lang} onChange={e => setLang(e.target.value)} />    */}
            <select style={{padding:'10px',width:'200px',marginLeft:'30px'}} name="" id="" value={lang} onChange={(e)=>setLang(e.target.value)} >
                {
                    data.map(d=>(<option key={d.iso_639_1}>{d.iso_639_1}</option>) )
@@ -98,7 +92,6 @@ function Home() {
            </div>
            <div>
             <h3 style={{marginLeft:'30px'}}>Genre....</h3>
-            {/* <input style={{ width: '400px', padding: '10px', marginBottom: '20px' ,marginLeft:'30px'}} value={lang} onChange={e => setLang(e.target.value)} />    */}
            <select style={{padding:'10px',width:'200px',marginLeft:'30px'}} name="" id=""  onChange={(e)=>setgenreValue(e.target.value)} >
                {
                    genre.genres?.map(g=>(<option value={g.id} key={g.id} id={g.id}>{g.name}</option>) )
@@ -113,14 +106,10 @@ function Home() {
               <h3 style={{marginLeft:'30px'}}>Vote_average....</h3>
                <input style={{ width: '200px', padding: '10px', marginBottom: '20px',marginLeft:'30px' }} type='number' value={vote} onChange={e => setvote(e.target.value)} />
             </div>
-            
         </div>
-                
-            
              <Card movies={movies} theme={theme} />
             </Container>            
         </div>
     )
 }
-
 export default Home;

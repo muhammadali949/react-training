@@ -4,6 +4,9 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { Button } from '@mui/material';
 import { useParams,useHistory } from 'react-router';
+
+const {REACT_APP_BASE,REACT_APP_KEY_API} = process.env
+
 function MoviesDetail() {
     const [movie, setMovie] = useState({})
     const {id}=useParams()
@@ -11,7 +14,7 @@ function MoviesDetail() {
     
     useEffect(() => {
 
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=742ad2778f4a03c2219378998891964f&language=en-US`)
+        axios.get(`${REACT_APP_BASE}/movie/${id}?api_key=${REACT_APP_KEY_API}&language=en-US`)
         .then(res => {
             console.log(res.data)
             setMovie(res.data);

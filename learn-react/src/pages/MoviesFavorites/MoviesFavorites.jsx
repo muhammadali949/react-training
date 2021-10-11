@@ -6,7 +6,6 @@ import {ThemeContext} from '../../App';
 
 function MoviesFavorites() {
     const theme = useContext(ThemeContext);  
-    console.log(theme.movies)
     return (
         <div>
         <Container>

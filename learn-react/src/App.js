@@ -18,14 +18,9 @@ export const ThemeContext = React.createContext();
 
 function App() {
   const [favourtMovies, setFavourtieMovies] = useState([])
-
-  // using useCallback to memoize function to boost performance
   const setFavouriteMoviesLocal = useCallback((movie) => {
     setFavourtieMovies([...favourtMovies, movie])
   }, [favourtMovies.length])
-  console.log(favourtMovies)
-
-
   return (
     <div className="App">
 
