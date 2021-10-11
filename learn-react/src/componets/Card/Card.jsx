@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,13 +8,19 @@ import Grid from '@material-ui/core/Grid'
 import { CardActionArea } from '@mui/material'
 import { makeStyles } from '@material-ui/core'; 
 import Button from '@mui/material/Button';
-
 import { Link } from 'react-router-dom'
+import { ThemeProvider,createTheme } from '@mui/material';
 
-
-
-function CardMovie({movies}) {
-    
+const themee = createTheme({
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
+});
+function CardMovie({movies,theme}) {
 
     return (
 
@@ -22,6 +28,7 @@ function CardMovie({movies}) {
         {movies.map(movie => (
             <Grid item xs={12} md={6} lg={4} key={movie.id}>
                 {/* <Paper> */}
+                <ThemeProvider theme={themee}>
                     <Card>
                         <CardActionArea>
                             <Link to={`/moviesdetail/${movie.id}`}>
@@ -43,10 +50,11 @@ function CardMovie({movies}) {
                                     {movie.vote_average}
                                 </Typography>
                             </CardContent>
-                            <Button onClick={()=>console.log(movie)} style={{marginBottom:'10px',marginLeft:'60px'}} variant="contained">Add To Favrotes</Button>
+                            <Button onClick={()=>theme.setFavourtieMovies(movie)}  style={{marginBottom:'10px',marginLeft:'60px'}} variant="contained">Add To Favrotes</Button>
 
                         </CardActionArea>
                     </Card>
+                    </ThemeProvider>
                 {/* </Paper> */}
             </Grid>
            

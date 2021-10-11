@@ -1,10 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react';
+import Card from '../../componets/Card';
+import Container from '@material-ui/core/Container'
+import {ThemeContext} from '../../App';
+
 
 function MoviesFavorites() {
+    const theme = useContext(ThemeContext);  
+    console.log(theme.movies)
     return (
         <div>
-            MoviesFavorites
-        </div>
+        <Container>
+         <Card movies={theme.movies} theme={theme} />
+        </Container>            
+    </div>
     )
 }
 
