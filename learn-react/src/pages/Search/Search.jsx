@@ -1,13 +1,9 @@
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import Container from '@material-ui/core/Container'
 import Card from '../../componets/Card';
-import {ThemeContext}from '../../App'
-
 const {REACT_APP_BASE,REACT_APP_KEY_API} = process.env
-
 function Home() {
-    const theme = useContext(ThemeContext);  
     const [movies,setMovies] = useState([])
     const [data, setData] = useState([])
     const [lang, setLang] = useState('')
@@ -16,8 +12,6 @@ function Home() {
     const [date, setDate] = useState('')
     const [vote, setvote] = useState('')
     const [queryValue,setQueryValue] = useState('')
-
-
     useEffect(() => {
         axios.get(`${REACT_APP_BASE}/search/movie?api_key=${REACT_APP_KEY_API}&language=en-US&page=1&include_adult=false&query=${queryValue}
         `)
@@ -49,8 +43,6 @@ function Home() {
     }
 }
     }, [date,vote])
-    
-
     useEffect(() => {
         axios.get(`${REACT_APP_BASE}/configuration/languages?api_key=${REACT_APP_KEY_API}
         `)
@@ -107,7 +99,7 @@ function Home() {
                <input style={{ width: '200px', padding: '10px', marginBottom: '20px',marginLeft:'30px' }} type='number' value={vote} onChange={e => setvote(e.target.value)} />
             </div>
         </div>
-             <Card movies={movies} theme={theme} />
+             <Card movies={movies}  />
             </Container>            
         </div>
     )

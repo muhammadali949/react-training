@@ -61,11 +61,7 @@ function CardMovie(props) {
 
     )
 }
-// const mapDispatchToProps = dispatch =>{
-//     return{
-//         favoritemovies: (movie)=> dispatch(favoritemovies(movie))
-//     }
-// }
+
 const mapDispatchToprops = dispatch => {
     return{
         favoritemovies: movie=> dispatch(favoritemovies(movie))
