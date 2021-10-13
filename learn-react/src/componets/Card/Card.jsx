@@ -8,6 +8,8 @@ import { CardActionArea } from '@mui/material'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
 import { ThemeProvider,createTheme } from '@mui/material';
+import { connect } from 'react-redux';
+import { favoritemovies } from '../../redux/favmovies/favMoviesActions';
 
 const themee = createTheme({
   components: {
@@ -18,12 +20,12 @@ const themee = createTheme({
     },
   },
 });
-function CardMovie({movies,theme}) {
+function CardMovie(props) {
 
     return (
 
         <Grid container spacing={3}>
-        {movies.map(movie => (
+        {props.movies.map(movie => (
             <Grid item xs={12} md={6} lg={4} key={movie.id}>
                 <ThemeProvider theme={themee}>
                     <Card>
@@ -47,7 +49,7 @@ function CardMovie({movies,theme}) {
                                     {movie.vote_average}
                                 </Typography>
                             </CardContent>
-                            <Button onClick={()=>theme.setFavourtieMovies(movie)}  style={{marginBottom:'10px',marginLeft:'60px'}} variant="contained">Add To Favrotes</Button>
+                            <Button onClick={()=>props.favoritemovies(movie)}  style={{marginBottom:'10px',marginLeft:'60px'}} variant="contained">Add To Favrotes</Button>
 
                         </CardActionArea>
                     </Card>
@@ -59,5 +61,14 @@ function CardMovie({movies,theme}) {
 
     )
 }
-
-export default CardMovie;
+// const mapDispatchToProps = dispatch =>{
+//     return{
+//         favoritemovies: (movie)=> dispatch(favoritemovies(movie))
+//     }
+// }
+const mapDispatchToprops = dispatch => {
+    return{
+        favoritemovies: movie=> dispatch(favoritemovies(movie))
+    }
+}
+export default connect(null,mapDispatchToprops)(CardMovie);
